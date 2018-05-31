@@ -18,6 +18,10 @@ app.get('/extensions', (req, res) => {
 	res.json(extensions)
 })
 
+app.get('/', (req, res) => {
+	res.send('Hello world')
+})
+
 app.use('/extensions', express.static('public'))
 
 app.listen(9000, () => console.log('App listening on port 9000!'))
