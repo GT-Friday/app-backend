@@ -6,13 +6,18 @@ const app = express()
 const server = http.Server(app);
 
 let extensions = [];
-const baseUrl = 'https://extensions-app-backend.herokuapp.com'
+// const baseUrl = 'https://extensions-app-backend.herokuapp.com'
+const baseUrl = 'http://localhost:9000'
 
 fs.readdir('./public/', (err, files) => {
 	files.forEach(file => {
+		let info = require(`../public/${file}`)
 		extensions.push({
-			name: file.replace('.js', ''),
-			url: `${baseUrl}/extensions/${file}`
+			name: info.name,
+			url: `${baseUrl}/extensions/${file}`,
+			description: info.description,
+			version: info.version,
+			icon: info.icon
 		})
 	})
 })

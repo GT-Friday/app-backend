@@ -1,1 +1,4 @@
-const foo = 'bar'
+module.exports = {
+	name: 'Test',
+	description: 'Test description'
+}
