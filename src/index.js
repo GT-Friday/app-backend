@@ -1,6 +1,9 @@
 const express = require('express')
+const http = require('http')
 const fs = require('fs')
+
 const app = express()
+const server = http.Server(app);
 
 let extensions = [];
 const baseUrl = 'https://extensions-app-backend.herokuapp.com'
@@ -24,4 +27,4 @@ app
 	})
 	.use('/extensions', express.static('public'))
 
-app.listen(9000, () => console.log('App listening on port 9000!'))
+server.listen(9000, () => console.log('App listening on port 9000!'))
