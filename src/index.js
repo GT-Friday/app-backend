@@ -14,14 +14,14 @@ fs.readdir('./public/', (err, files) => {
 	})
 })
 
-app.get('/extensions', (req, res) => {
-	res.json(extensions)
-})
-
-app.get('/', (req, res) => {
-	res.send('Hello world')
-})
-
-app.use('/extensions', express.static('public'))
+app
+	.use(express.json())
+	.get('/', (req, res) => {
+		res.send('Hello world')
+	})
+	.get('/extensions', (req, res) => {
+		res.json(extensions)
+	})
+	.use('/extensions', express.static('public'))
 
 app.listen(9000, () => console.log('App listening on port 9000!'))
